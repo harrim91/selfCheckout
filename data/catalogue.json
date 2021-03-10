@@ -1,0 +1,23 @@
+[
+  {
+    "barcode": "123",
+    "price": 7,
+    "name": "Orange"
+  },
+  {
+    "barcode": "789",
+    "price": 5,
+    "name": "Apple"
+  },
+
+  {
+    "barcode": "765",
+    "price": 25,
+    "name": "Kiwi"
+  },
+  {
+    "barcode": "456",
+    "price": 6,
+    "name": "Banana"
+  }
+]

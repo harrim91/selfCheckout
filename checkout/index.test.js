@@ -26,7 +26,7 @@ describe("scanProduct", () => {
   it("returns a product from a catalogue by barcode", () => {
     // setup
     // exercise
-    const result = checkout.scanProduct(catalogue, "765");
+    const result = checkout.scanProduct(catalogue, kiwi.barcode);
     // verify
     const expected = kiwi;
     expect(result).toBe(expected);
@@ -46,7 +46,45 @@ describe("scanProduct", () => {
 describe("addProduct", () => {
   it("adds item to a basket", () => {
     const basket = [];
+
     checkout.addProduct(basket, banana);
-    expect(basket).toEqual([banana]);
+
+    const expected = [banana];
+
+    expect(basket).toEqual(expected);
+  });
+});
+
+describe("getTotal", () => {
+  it("returns 0 if the basket is empty", () => {
+    const basket = [];
+
+    const result = checkout.getTotal(basket);
+
+    const expected = 0;
+
+    expect(result).toBe(expected);
+  });
+
+  it("gets the total price of items in a basket", () => {
+    const basket = [orange, apple, apple];
+
+    const result = checkout.getTotal(basket);
+
+    const expected = orange.price + apple.price + apple.price;
+
+    expect(result).toBe(expected);
+  });
+});
+
+describe("removeItem", () => {
+  it("removes an item from a basket", () => {
+    const basket = [orange, apple, apple];
+
+    checkout.removeItem(basket, apple.barcode);
+
+    const expected = [orange, apple];
+
+    expect(basket).toEqual(expected);
   });
 });
